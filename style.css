@@ -1,3 +1,41 @@
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-color: #181818;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 360px;
+    min-width: 180px;
+    aspect-ratio: 9/16;
+    border: solid 0.75vh #EDEADE;
+    border-radius: 12px;
+}
+
+#screen {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: #323232;
+    border-radius: 12px;
+    margin: 3%;
+}
+
+#keys {
+    display: flex;
+    flex-direction: row;
+    flex: 4;
+    border-radius: 12px;
+    margin: 3%;
 }
