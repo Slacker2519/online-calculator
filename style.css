@@ -28,14 +28,21 @@ body {
     flex-direction: row;
     flex: 1;
     background-color: #323232;
+    border: 2px solid black;
     border-radius: 12px;
     margin: 3%;
+    padding: 0 2%;
+    
+    align-items: center;
+    justify-content: flex-end;
+    color: #7e4eac;
+    font-size: 4em;
+    font-weight: bold;
 }
 
 #keys {
-    display: flex;
-    flex-direction: row;
     flex: 4;
+    display: flex;
     border-radius: 12px;
     margin: 3%;
 }
