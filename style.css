@@ -1,8 +1,14 @@
+@font-face {
+    font-family: calculator;
+    src: url(Calculator.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: #181818;
+    font-family: 'calculator';
 }
 
 body {
@@ -25,19 +31,36 @@ body {
 
 #screen {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
     background-color: #323232;
     border: 2px solid black;
     border-radius: 12px;
     margin: 3%;
-    padding: 0 2%;
-    
-    align-items: center;
+    padding: 2%;
+}
+
+.current-input, .previous-input {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    font-weight: bold;
+    overflow: hidden;
+    background-color: #323232;
+}
+
+.current-input {
+    align-items: flex-end;
     justify-content: flex-end;
     color: #7e4eac;
-    font-size: 4em;
-    font-weight: bold;
+    font-size: 3em;
+}
+
+.previous-input {
+    align-items: flex-start;
+    justify-content: flex-end;
+    color: hsla(272, 38%, 49%, 0.801);
+    font-size: 2em;
 }
 
 #keys {
