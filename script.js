@@ -80,7 +80,7 @@ function processUserInput(input) {
     }
     else if (input.innerText == '+' || input.innerText == '-' || 
         input.innerText == '×' || input.innerText == '÷') {
-            operatorsInput(previousInputArray, currentInputArray, input);
+            operatorsInput(previousInputArray, input);
     }
     else if (input.innerText == '=') {
         equalInput();
@@ -112,12 +112,17 @@ function numbersInput(currentInputArray, input) {
             return;
     }
 
-    currentInputArray.length == 1 && currentInputArray[0] == 0 ?
+    if (operator == '') {
+        acInput();
+        currentInputArray = currentInputDiv.innerText.split('');
+    }
+
+    (currentInputArray.length == 1 && currentInputArray[0] == 0) ?
         currentInputDiv.innerText = input.innerText :
         currentInputDiv.innerText += input.innerText;
 }
 
-function operatorsInput(previousInputArray, currentInputArray, input) {
+function operatorsInput(previousInputArray, input) {
     if (previousInputArray.length == 0) {
         firstNumber = Number(currentInputDiv.innerText);
         operator = input.innerText;
