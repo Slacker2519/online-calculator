@@ -75,8 +75,11 @@ function processUserInput(input) {
     else if (input.innerText == '⌫') {
         backspaceInput(currentInputArray);
     }
-    else if (Number.isInteger(Number(input.innerText)) || input.innerText == '.') {
-        numbersInput(currentInputArray, input);
+    else if (Number.isInteger(Number(input.innerText))) {
+        numbersInput(previousInputArray, currentInputArray, input);
+    }
+    else if (input.innerText == '.') {
+        decimalSeparatorInput(previousInputArray);
     }
     else if (input.innerText == '+' || input.innerText == '-' || 
         input.innerText == '×' || input.innerText == '÷') {
@@ -104,7 +107,7 @@ function backspaceInput(currentInputArray) {
     currentInputDiv.textContent = currentInputDiv.textContent.slice(0, -1);
 }
 
-function numbersInput(currentInputArray, input) {
+function numbersInput(previousInputArray, currentInputArray, input) {
     if (currentInputArray.length >= maxNumber) return;
 
     if (currentInputArray.length == 1 && currentInputArray[0] == 0 &&
@@ -112,7 +115,7 @@ function numbersInput(currentInputArray, input) {
             return;
     }
 
-    if (operator == '') {
+    if (operator == '' && previousInputArray.length > 0) {
         acInput();
         currentInputArray = currentInputDiv.innerText.split('');
     }
@@ -120,6 +123,22 @@ function numbersInput(currentInputArray, input) {
     (currentInputArray.length == 1 && currentInputArray[0] == 0) ?
         currentInputDiv.innerText = input.innerText :
         currentInputDiv.innerText += input.innerText;
+}
+
+function decimalSeparatorInput(previousInputArray) {
+    if (currentInputArray.length > 0 && currentInputArray[currentInputArray.length - 1] == '.') {
+        return;
+    }
+    else if (previousInputArray.length > 0 && operator != '') {
+        currentInputDiv.innerText += '.';
+    }
+    else if (previousInputArray.length > 0 && operator == '') {
+        acInput();
+        currentInputDiv.textContent += '.';
+    }
+    else {
+        currentInputDiv.textContent += '.';
+    }
 }
 
 function operatorsInput(previousInputArray, input) {
